@@ -93,5 +93,6 @@ defmodule GoogleCerts.Client do
     end)
   end
 
-  defp expiration(scnds), do: {:ok, DateTime.add(DateTime.utc_now(), scnds, :second)}
+  # similar to https://github.com/phoenixframework/phoenix/issues/4633
+  defp expiration(scnds), do: {:ok, DateTime.add(DateTime.utc_now(), scnds, :second, Calendar.UTCOnlyTimeZoneDatabase)}
 end
